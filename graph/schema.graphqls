@@ -1,0 +1,40 @@
+type Blogpost {
+    id: ID!
+    title: String!
+    file: String!
+    rating: Number
+    comments: [Comment!]
+    author: User!
+    published: Date!
+}
+
+type User {
+  id: ID!
+  email: String!
+  username: String!
+  password: String!
+}
+
+type Comment {
+  id: ID!
+  text: String!
+  author: User!
+  published: Date!
+}
+
+input NewBlogpost {
+  title: String!
+  file: String!
+  author: User!
+}
+
+input NewUser {
+  email: String!
+  username: String!
+  password: String!
+}
+
+type Mutation {
+  createNewBlogpost(input: NewBlogpost!): Blogpost!
+  createNewUser(input: NewUser!): User!
+}
